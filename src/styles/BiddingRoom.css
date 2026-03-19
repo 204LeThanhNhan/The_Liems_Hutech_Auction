@@ -1,0 +1,1495 @@
+.bidding-room {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 2rem;
+}
+
+/* Header with reset button */
+.bidding-room-header {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  flex-wrap: wrap;
+}
+
+.reset-layout-btn {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.3);
+}
+
+.reset-layout-btn:hover {
+  box-shadow: 0 6px 20px rgba(33, 150, 243, 0.5);
+}
+
+.layout-hint {
+  color: #666;
+  font-size: 0.9rem;
+  font-style: italic;
+  margin-left: auto;
+}
+
+/* Toggle Panel Buttons */
+.toggle-panel-btn {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  box-shadow: 0 3px 12px rgba(76, 175, 80, 0.3);
+}
+
+.toggle-panel-btn:hover {
+  box-shadow: 0 5px 18px rgba(76, 175, 80, 0.5);
+}
+
+.toggle-panel-btn.collapsed {
+  background: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
+  box-shadow: 0 3px 12px rgba(255, 152, 0, 0.3);
+}
+
+.toggle-panel-btn.collapsed:hover {
+  box-shadow: 0 5px 18px rgba(255, 152, 0, 0.5);
+}
+
+/* Grid Layout - Fixed height 600px */
+.bidding-grid-layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem 0 2rem;
+  padding-right: 3rem !important; /* Extra space for right resize handle */
+  position: relative;
+  height: 600px !important;
+  overflow: visible !important; /* Allow resize handles to show */
+}
+
+.react-grid-layout {
+  height: 600px !important;
+  position: relative !important;
+  overflow: visible !important;
+}
+
+.grid-item {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.3s, opacity 0.3s;
+  height: 600px !important;
+  max-height: 600px !important;
+  min-height: 600px !important;
+}
+
+.grid-item:hover {
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* Hide items that are too small */
+.grid-item[style*="width: 0"] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Ensure resize handles are always visible */
+.react-grid-item {
+  overflow: visible !important;
+}
+
+/* Specific height constraints for each grid item */
+.chat-box.grid-item {
+  max-height: 510px !important;
+  height: 510px !important;
+}
+
+.bid-history-sidebar.grid-item {
+  max-height: 510px !important;
+  height: 510px !important;
+}
+
+.product-section.grid-item {
+  max-height: 500px !important;
+  height: 500px !important;
+}
+
+.bidding-section.grid-item {
+  height: auto;
+  min-height: 300px;
+}
+
+/* Drag Handle */
+.drag-handle {
+  background: white;
+  color: #333;
+  padding: 0.8rem 1rem;
+  cursor: move;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  flex-shrink: 0;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.drag-handle:active {
+  cursor: grabbing;
+  background: #f8f9fa;
+}
+
+.drag-icon {
+  font-size: 1.2rem;
+  opacity: 0.5;
+  color: #999;
+}
+
+.drag-handle h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+/* Collapse Button in Header */
+.collapse-btn {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.3s;
+  margin-left: auto;
+}
+
+.collapse-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+.collapse-btn:active {
+  transform: scale(0.95);
+}
+
+/* Chat Box */
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 510px;
+}
+
+.chat-box .chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+}
+
+.chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+.chat-placeholder {
+  text-align: center;
+  color: #999;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+/* Chat Input Container */
+.chat-input-container {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.8rem;
+  border-top: 2px solid #f0f0f0;
+  background: white;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.chat-input {
+  flex: 1;
+  padding: 0.7rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.chat-input:focus {
+  border-color: #2196f3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.chat-send-btn {
+  background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
+  color: white;
+  border: none;
+  padding: 0.7rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+  box-shadow: 0 2px 10px rgba(33, 150, 243, 0.3);
+  white-space: nowrap;
+}
+
+.chat-send-btn:hover {
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.5);
+}
+
+.chat-send-btn:active {
+  opacity: 0.9;
+}
+
+/* Product Section */
+.product-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 500px;
+}
+
+.product-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.product-image-carousel {
+  position: relative;
+  width: 100%;
+  height: 250px;
+  margin-bottom: 0.8rem;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.carousel-media {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.carousel-btn-left,
+.carousel-btn-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-btn-left:hover,
+.carousel-btn-right:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn-left {
+  left: 15px;
+}
+
+.carousel-btn-right {
+  right: 15px;
+}
+
+.carousel-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 2;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.dot.active {
+  background: white;
+  width: 30px;
+  border-radius: 5px;
+}
+
+.no-image {
+  font-size: 3rem;
+  color: #ccc;
+}
+
+.product-name {
+  font-size: 1.7rem;
+  color: #333;
+  margin-bottom: 0.3rem;
+  font-weight: 400;
+}
+
+.auction-name-text {
+  color: #666;
+  font-size: 1.1rem;
+  margin-bottom: 0.6rem;
+  font-weight: 400;
+}
+
+.product-description-text {
+  color: #555;
+  line-height: 1.6;
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+/* Bidding Section */
+.bidding-section {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.bidding-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.5rem;
+}
+
+.connection-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+
+.status-dot.connected {
+  background: #4caf50;
+}
+
+.status-dot.disconnected {
+  background: #f44336;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+.current-price-box {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #ff9800 0%, #f44336 100%);
+  border-radius: 15px;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.price-label {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 0.5rem;
+}
+
+.price-value {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.highest-bidder {
+  font-size: 1rem;
+  margin-top: 0.5rem;
+}
+
+.you-leading {
+  color: #ffd700;
+  font-weight: 600;
+}
+
+.total-bids {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-top: 0.5rem;
+}
+
+.countdown-box {
+  text-align: center;
+  padding: 1.5rem;
+  background: #fff3e0;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+}
+
+.countdown-label {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.countdown-time {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff9800;
+  font-family: 'Courier New', monospace;
+}
+
+.countdown-ended {
+  font-size: 1.5rem;
+  color: #f44336;
+  font-weight: 600;
+}
+
+/* Bid Actions */
+.bid-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.quick-bids {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.quick-bid-btn {
+  background: linear-gradient(135deg, #ff9800 0%, #f44336 100%);
+  color: white;
+  border: none;
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.quick-bid-btn:hover {
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.bid-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.bid-result {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.custom-bid-toggle {
+  background: white;
+  color: #ff9800;
+  border: 2px solid #ff9800;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.custom-bid-toggle:hover {
+  background: #ff9800;
+  color: white;
+}
+
+.custom-bid-form {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.custom-bid-input {
+  flex: 1;
+  padding: 0.8rem;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none;
+}
+
+.custom-bid-input:focus {
+  border-color: #ff9800;
+}
+
+.custom-bid-submit {
+  background: #ff9800;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.custom-bid-submit:hover {
+  background: #f44336;
+}
+
+.leading-message {
+  text-align: center;
+  padding: 2rem;
+  background: #e8f5e9;
+  border-radius: 10px;
+  color: #2e7d32;
+}
+
+.trophy {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Bid History Sidebar */
+.bid-history-sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-height: 510px;
+}
+
+.bid-history-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.bid-history-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bid-history-list::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+.no-bids {
+  text-align: center;
+  color: #999;
+  padding: 2rem;
+}
+
+.bid-history-item {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+.bid-history-item:hover {
+  background: #e9ecef;
+}
+
+.bid-user {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.bid-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff9800;
+}
+
+.bid-username {
+  font-weight: 600;
+  color: #333;
+}
+
+.bid-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.3rem;
+}
+
+.bid-amount {
+  font-weight: 700;
+  color: #ff9800;
+  font-size: 1.1rem;
+}
+
+.bid-time {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+/* Toast Notification */
+.toast-notification {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  background: white;
+  padding: 1.2rem 1.8rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+  z-index: 10000;
+  opacity: 0;
+  transform: translateX(400px);
+  transition: all 0.3s;
+  min-width: 250px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.toast-notification.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.toast-success {
+  border-left: 5px solid #4caf50;
+  color: #2e7d32;
+  background: #e8f5e9;
+}
+
+.toast-error {
+  border-left: 5px solid #f44336;
+  color: #c62828;
+  background: #ffebee;
+}
+
+.toast-info {
+  border-left: 5px solid #2196f3;
+  color: #1565c0;
+  background: #e3f2fd;
+}
+
+/* Loading & Error */
+.loading-container,
+.error-container {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .bidding-grid-layout {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .bidding-room-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .quick-bids {
+    grid-template-columns: 1fr;
+  }
+  
+  .price-value {
+    font-size: 2rem;
+  }
+  
+  .product-name {
+    font-size: 1.8rem;
+  }
+  
+  .auction-name-text {
+    font-size: 1.1rem;
+  }
+  
+  .product-description-text {
+    font-size: 1rem;
+  }
+  
+  .reset-layout-btn {
+    width: 100%;
+  }
+}
+
+/* Floating Bidding Panel */
+.floating-bidding-panel {
+  position: fixed;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  resize: both;
+  min-width: 320px;
+  min-height: 320px;
+  max-width: 450px;
+  max-height: 500px;
+}
+
+.bidding-panel-header {
+  background: white;
+  color: #333;
+  padding: 0.8rem 1rem;
+  cursor: move;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  border-bottom: 2px solid #f0f0f0;
+  flex-shrink: 0;
+}
+
+.bidding-panel-header:active {
+  cursor: grabbing;
+  background: #f8f9fa;
+}
+
+.bidding-panel-header .drag-icon {
+  font-size: 1.2rem;
+  opacity: 0.5;
+  color: #999;
+}
+
+.bidding-panel-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #333;
+  flex: 1;
+}
+
+.status-dot-mini {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+  flex-shrink: 0;
+}
+
+.status-dot-mini.connected {
+  background: #4caf50;
+}
+
+.status-dot-mini.disconnected {
+  background: #f44336;
+}
+
+.bidding-panel-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.bidding-panel-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.bidding-panel-content::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 3px;
+}
+
+/* Price Fieldset with Gold Border */
+.price-fieldset {
+  border: 3px solid #ffd700;
+  border-radius: 12px;
+  padding: 1rem;
+  background: linear-gradient(135deg, #fffef7 0%, #fff9e6 100%);
+  margin: 0;
+}
+
+.price-fieldset legend {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #d4af37;
+  padding: 0 0.5rem;
+}
+
+.current-price-display {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #d4af37;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(212, 175, 55, 0.3);
+}
+
+.bidder-status {
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+.status-leading {
+  color: #4caf50;
+  font-weight: 700;
+}
+
+.status-normal {
+  color: #666;
+  font-weight: 500;
+}
+
+/* Quick Bid Buttons Row */
+.quick-bids-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+}
+
+.quick-bid-btn-new {
+  color: white;
+  border: none;
+  padding: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+.quick-bid-green {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+}
+
+.quick-bid-green:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+}
+
+.quick-bid-yellow {
+  background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+}
+
+.quick-bid-yellow:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.6);
+}
+
+.quick-bid-red {
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+}
+
+.quick-bid-red:hover:not(:disabled) {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(244, 67, 54, 0.6);
+}
+
+.quick-bid-btn-new:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.quick-bid-btn-new:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #ccc !important;
+  box-shadow: none !important;
+}
+
+/* Custom Bid Row */
+.custom-bid-row {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.custom-bid-input-new {
+  flex: 1;
+  padding: 0.9rem;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.custom-bid-input-new:focus {
+  border-color: #2196f3;
+  box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
+
+.custom-bid-input-new:disabled {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.bid-submit-btn {
+  background: linear-gradient(135deg, #f44336 0%, #d32f2f 100%);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+  white-space: nowrap;
+}
+
+.bid-submit-btn:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(244, 67, 54, 0.6);
+}
+
+.bid-submit-btn:active:not(:disabled) {
+  opacity: 0.9;
+}
+
+.bid-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #ccc;
+}
+
+/* Leading Message Compact */
+.leading-message-compact {
+  text-align: center;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border-radius: 12px;
+  border: 2px solid #4caf50;
+}
+
+.trophy-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.leading-message-compact p {
+  margin: 0;
+  font-weight: 700;
+  color: #2e7d32;
+  font-size: 1.1rem;
+}
+
+/* Compact Panel Info */
+.panel-info-compact {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.info-compact {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.info-compact strong {
+  color: #333;
+  font-weight: 700;
+}
+
+.info-separator {
+  color: #ccc;
+  font-weight: 700;
+}
+
+/* Toggle Collapse Button - Remove */
+
+/* Collapsed Icons */
+.collapsed-icon {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+  z-index: 1000;
+}
+
+.collapsed-icon:hover {
+  box-shadow: 0 6px 25px rgba(0,0,0,0.3);
+}
+
+.collapsed-chat {
+  right: 20px;
+}
+
+.collapsed-history {
+  right: 80px;
+}
+
+
+/* Bid History Cards - New Design */
+.bid-card {
+  background: white;
+  border-radius: 10px;
+  padding: 0.8rem;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+  border-left: 3px solid #4caf50;
+}
+
+.bid-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.bid-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.bid-user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.bid-avatar-small {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #4caf50;
+}
+
+.bid-avatar-placeholder {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #e0e0e0 0%, #bdbdbd 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+}
+
+.bid-username-small {
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  background: linear-gradient(135deg, #ff9800 0%, #f44336 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(102, 126, 234, 0.1);
+  letter-spacing: 0.3px;
+}
+
+.bid-amount-highlight {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #4caf50;
+  text-shadow: 0 1px 2px rgba(76, 175, 80, 0.2);
+}
+
+.bid-card-bottom {
+  display: flex;
+  justify-content: flex-start;
+  padding-left: 2.3rem;
+}
+
+.bid-time-small {
+  font-size: 0.8rem;
+  color: #999;
+  font-style: italic;
+}
+
+.no-bids {
+  text-align: center;
+  color: #999;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+}
+
+
+/* React Grid Layout Resize Handles */
+.react-resizable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  z-index: 100 !important; /* Higher z-index */
+}
+
+.react-resizable-handle-e {
+  right: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+  width: 20px;
+  height: 100%;
+  background: rgba(33, 150, 243, 0.1);
+  border-right: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.react-resizable-handle-e:hover,
+.react-grid-item:hover .react-resizable-handle-e {
+  background: rgba(33, 150, 243, 0.3);
+  border-right-color: #2196f3;
+  width: 25px;
+}
+
+.react-resizable-handle-w {
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: ew-resize;
+  width: 20px;
+  height: 100%;
+  background: rgba(33, 150, 243, 0.1);
+  border-left: 3px solid transparent;
+  transition: all 0.3s;
+}
+
+.react-resizable-handle-w:hover,
+.react-grid-item:hover .react-resizable-handle-w {
+  background: rgba(33, 150, 243, 0.3);
+  border-left-color: #2196f3;
+  width: 25px;
+}
+
+.react-resizable-handle-se {
+  right: -10px;
+  bottom: -10px;
+  cursor: se-resize;
+}
+
+.react-resizable-handle-sw {
+  left: -10px;
+  bottom: -10px;
+  cursor: sw-resize;
+}
+
+/* Visual indicator for resize handles */
+.react-resizable-handle::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 150, 243, 0.3);
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.grid-item:hover .react-resizable-handle::after {
+  opacity: 1;
+}
+
+/* Fix resize handle at right edge - make it visible */
+.react-grid-item:last-child .react-resizable-handle-e,
+.react-grid-item[style*="left: 100%"] .react-resizable-handle-e {
+  right: 0 !important;
+  width: 30px !important;
+  background: rgba(33, 150, 243, 0.1);
+  border-left: 3px solid #2196f3;
+}
+
+.react-grid-item:last-child .react-resizable-handle-e::after,
+.react-grid-item[style*="left: 100%"] .react-resizable-handle-e::after {
+  opacity: 1;
+}
+
+
+/* Grid Layout Placeholder - Thu nhỏ vùng đỏ khi drag */
+.react-grid-placeholder {
+  background: rgba(244, 67, 54, 0.2) !important;
+  border: 2px dashed #f44336 !important;
+  border-radius: 10px !important;
+  opacity: 0.5 !important;
+  z-index: 1 !important;
+  max-height: 510px !important; /* Match grid item max height */
+}
+
+/* Giảm chiều cao tối thiểu của các grid items */
+.grid-item {
+  min-height: 100px !important;
+}
+
+
+/* Collapsed Bidding Panel */
+.floating-bidding-panel.collapsed {
+  height: auto !important;
+  min-height: auto !important;
+}
+
+.floating-bidding-panel .collapse-btn {
+  margin-left: auto;
+}
+
+
+/* Chat Messages - Beautiful Bubbles */
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  padding: 1rem;
+}
+
+.chat-message {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  animation: fadeInUp 0.3s ease;
+}
+
+/* My messages - align right, no avatar */
+.chat-message-mine {
+  flex-direction: row-reverse;
+}
+
+.chat-message-mine .chat-avatar {
+  display: none;
+}
+
+.chat-message-mine .chat-message-header {
+  flex-direction: row-reverse;
+}
+
+.chat-message-mine .chat-message-content {
+  background: linear-gradient(135deg, #4caf50 0%, #45a049 100%) !important;
+  color: white !important;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 4px;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3) !important;
+}
+
+.chat-message-mine .chat-message-content::before {
+  display: none;
+}
+
+.chat-message-mine .chat-message-content::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 0 8px;
+  border-color: #4caf50 transparent transparent transparent;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.chat-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e0e0e0;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.chat-message-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.3rem;
+}
+
+.chat-username {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: #2c3e50;
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.chat-time {
+  font-size: 0.75rem;
+  color: #999;
+  margin-left: auto;
+}
+
+.chat-message-content {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  padding: 0.7rem 1rem;
+  border-radius: 18px;
+  border-top-left-radius: 4px;
+  color: #1565c0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+  position: relative;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: pre-wrap;
+}
+
+.chat-message-content::before {
+  content: '';
+  position: absolute;
+  left: -6px;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 8px 8px 0;
+  border-color: transparent #e3f2fd transparent transparent;
+}
+
+/* Alternate colors for different users - based on user color class */
+.chat-message.user-color-0:not(.chat-message-mine) .chat-message-content {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  color: #1565c0;
+  box-shadow: 0 2px 8px rgba(33, 150, 243, 0.15);
+}
+
+.chat-message.user-color-0:not(.chat-message-mine) .chat-message-content::before {
+  border-color: transparent #e3f2fd transparent transparent;
+}
+
+.chat-message.user-color-1:not(.chat-message-mine) .chat-message-content {
+  background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+  color: #ffa726;
+  box-shadow: 0 2px 8px rgba(156, 39, 176, 0.15);
+}
+
+.chat-message.user-color-1:not(.chat-message-mine) .chat-message-content::before {
+  border-color: transparent #f3e5f5 transparent transparent;
+}
+
+.chat-message.user-color-2:not(.chat-message-mine) .chat-message-content {
+  background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+  color: #e65100;
+  box-shadow: 0 2px 8px rgba(255, 152, 0, 0.15);
+}
+
+.chat-message.user-color-2:not(.chat-message-mine) .chat-message-content::before {
+  border-color: transparent #fff3e0 transparent transparent;
+}
+
+.chat-message.user-color-3:not(.chat-message-mine) .chat-message-content {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  color: #2e7d32;
+  box-shadow: 0 2px 8px rgba(76, 175, 80, 0.15);
+}
+
+.chat-message.user-color-3:not(.chat-message-mine) .chat-message-content::before {
+  border-color: transparent #e8f5e9 transparent transparent;
+}
+
+.chat-placeholder {
+  text-align: center;
+  color: #999;
+  padding: 3rem 1rem;
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+/* Character counter */
+.chat-char-count {
+  font-size: 0.75rem;
+  color: #999;
+  position: absolute;
+  right: 90px;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: color 0.3s;
+}
+
+.chat-char-count.warning {
+  color: #f44336;
+  font-weight: 600;
+}

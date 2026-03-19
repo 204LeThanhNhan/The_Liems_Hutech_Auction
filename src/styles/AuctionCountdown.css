@@ -1,0 +1,214 @@
+.auction-countdown-container {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.countdown-card {
+  background: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  border: 3px solid #3498db;
+  transition: all 0.3s ease;
+}
+
+/* Price Section */
+.countdown-price {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.price-label {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.price-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Countdown Round */
+.countdown-round {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  border-radius: 8px;
+}
+
+.round-label {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #2c3e50;
+  letter-spacing: 2px;
+}
+
+.round-timer {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #e74c3c;
+  font-family: 'Courier New', monospace;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Progress Bar */
+.countdown-progress-container {
+  width: 100%;
+  height: 20px;
+  background: #ecf0f1;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.countdown-progress-bar {
+  height: 100%;
+  background: #3498db;
+  border-radius: 10px;
+  transition: width 1s linear;
+  box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+}
+
+/* Status Text */
+.countdown-status-text {
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #3498db;
+  margin-top: 0.5rem;
+}
+
+/* Waiting State */
+.countdown-waiting {
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.waiting-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.waiting-text {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  font-weight: 500;
+}
+
+/* Sold Final State */
+.countdown-sold-final {
+  text-align: center;
+  padding: 2rem 0;
+  background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+  border-radius: 8px;
+  color: white;
+}
+
+.sold-icon {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  animation: bounce 0.5s ease-in-out 3;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.sold-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Sold Temp State */
+.countdown-sold-temp {
+  text-align: center;
+  padding: 2rem 0;
+  background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);
+  border-radius: 8px;
+  color: white;
+}
+
+.temp-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.temp-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* Disconnected State */
+.countdown-disconnected {
+  text-align: center;
+  padding: 0.5rem;
+  background: #e74c3c;
+  color: white;
+  border-radius: 6px;
+  margin-top: 1rem;
+  font-weight: 600;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .price-value {
+    font-size: 2rem;
+  }
+  
+  .round-timer {
+    font-size: 1.5rem;
+  }
+  
+  .countdown-progress-container {
+    height: 15px;
+  }
+}
